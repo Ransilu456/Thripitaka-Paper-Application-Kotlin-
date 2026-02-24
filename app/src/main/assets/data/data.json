@@ -1,0 +1,1136 @@
+[
+  {
+    "title": "ත්‍රිපිටක ප්‍රවේශ පරීක්ෂණය",
+    "categories": [
+      {
+        "name": "ධර්ම ඥානය",
+        "papers": [
+          {
+            "year": 2017,
+            "paper_title": "ධර්ම ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Dharma/2017%20TP%20Dharma.pdf"
+          },
+          {
+            "year": 2018,
+            "paper_title": "ධර්ම ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Dharma/2018%20TP%20Dharma.pdf"
+          },
+          {
+            "year": 2019,
+            "paper_title": "ධර්ම ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Dharma/2019%20TP%20Dharma.pdf"
+          },
+          {
+            "year": 2020,
+            "paper_title": "ධර්ම ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Dharma/2020%20TP%20Dharma.pdf"
+          },
+          {
+            "year": 2021,
+            "paper_title": "ධර්ම ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Dharma/2021%20TP%20Dharma.pdf"
+          },
+          {
+            "year": 2022,
+            "paper_title": "ධර්ම ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Dharma/2022%20TP%20Dharma.pdf"
+          },
+          {
+            "year": 2024,
+            "paper_title": "ධර්ම ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Dharma/2024%20TP%20Dharma.pdf"
+          },
+          {
+            "year": 2025,
+            "paper_title": "ධර්ම ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Dharma/2025%20TP%20Dharma.pdf"
+          }
+        ]
+      },
+      {
+        "name": "විනය ඥානය",
+        "papers": [
+          {
+            "year": 2017,
+            "paper_title": "විනය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Winaya/2017%20TP%20Winaya.pdf"
+          },
+          {
+            "year": 2018,
+            "paper_title": "විනය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Winaya/2018%20TP%20Winaya.pdf"
+          },
+          {
+            "year": 2019,
+            "paper_title": "විනය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Winaya/2019%20TP%20Winaya.pdf"
+          },
+          {
+            "year": 2020,
+            "paper_title": "විනය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Winaya/2020%20TP%20Winaya.pdf"
+          },
+          {
+            "year": 2021,
+            "paper_title": "විනය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Winaya/2021%20TP%20Winaya.pdf"
+          },
+          {
+            "year": 2022,
+            "paper_title": "විනය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Winaya/2022%20TP%20Winaya.pdf"
+          },
+          {
+            "year": 2024,
+            "paper_title": "විනය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Winaya/2024%20TP%20WInaya.pdf"
+          },
+          {
+            "year": 2025,
+            "paper_title": "විනය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Winaya/2025%20TP%20Vinaya.pdf"
+          }
+        ]
+      },
+      {
+        "name": "සාමාන්‍ය ඥානය",
+        "papers": [
+          {
+            "year": 2017,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Samanya/2017%20TP%20Samanya.pdf"
+          },
+          {
+            "year": 2018,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Samanya/2018%20TP%20Samanya.pdf"
+          },
+          {
+            "year": 2019,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Samanya/2019%20TP%20Samanya.pdf"
+          },
+          {
+            "year": 2020,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Samanya/2020%20TP%20Samanya.pdf"
+          },
+          {
+            "year": 2021,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Samanya/2021%20TP%20Samanya.pdf"
+          },
+          {
+            "year": 2022,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Samanya/2022%20TP%20Samanya.pdf"
+          },
+          {
+            "year": 2024,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Samanya/2024%20TP%20Samanya.pdf"
+          },
+          {
+            "year": 2025,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TP/Samanya/2025%20TP%20Samanya.pdf"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "ත්‍රිපිටකාචාර්ය උපාධි පරීක්ෂණය",
+    "categories": [
+      {
+        "name": "සද්ධර්මචාර්ය",
+        "papers": [
+          {
+            "year": 2017,
+            "part": 1,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2017%20S%20Acharya%20Suthra%201.pdf"
+          },
+          {
+            "year": 2017,
+            "part": 2,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2017%20S%20Acharya%20Suthra%202.pdf"
+          },
+          {
+            "year": 2017,
+            "part": 3,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2017%20S%20Acharya%20Suthra%203.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 1,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2018%20S%20Acharya%20Suthra%201.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 2,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2018%20S%20Acharya%20Suthra%202.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 3,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2018%20S%20Acharya%20Suthra%203.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 1,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2019%20S%20Acharya%20Suthra%201.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 2,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2019%20S%20Acharya%20Suthra%202.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 3,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2019%20S%20Acharya%20Suthra%203.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 1,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2020%20S%20Acharya%20Suthra%201.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 2,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2020%20S%20Acharya%20Suthra%202.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 3,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2020%20S%20Acharya%20Suthra%203.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 1,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2021%20S%20Acharya%20Suthra%201.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 2,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2021%20S%20Acharya%20Suthra%202.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 3,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2021%20S%20Acharya%20Suthra%203.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 1,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2022%20S%20Acharya%20Suthra%201.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 2,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2022%20S%20Acharya%20Suthra%202.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 3,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2022%20S%20Acharya%20Suthra%203.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 1,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2024%20S%20Acharya%20suthra%201.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 2,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2024%20S%20Acharya%20Suthra%202.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 3,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2024%20S%20Acharya%20Suthra%203.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 1,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2025%20S%20Acharya%20suthra%201.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 2,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2025%20S%20Acharya%20suthra%202.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 3,
+            "paper_title": "සූත්‍ර පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAS/2025%20S%20Acharya%20suthra%203.pdf"
+          }
+        ]
+      },
+      {
+        "name": "ව්නයචාර්ය",
+        "papers": [
+          {
+            "year": 2017,
+            "part": 1,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2017%20V%20Acharya%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2017,
+            "part": 2,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2017%20V%20Acharya%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2017,
+            "part": 3,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2017%20V%20Acharya%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 1,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2018%20V%20Acharya%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 2,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2018%20V%20Acharya%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 3,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2018%20V%20Acharya%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 1,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2019%20V%20Acharya%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 2,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2019%20V%20Acharya%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 3,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2019%20V%20Acharya%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 1,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2020%20V%20Acharya%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 2,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2020%20V%20Acharya%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 3,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2020%20V%20Acharya%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 1,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2021%20V%20Acharya%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 2,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2021%20V%20Acharya%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 3,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2021%20V%20Acharya%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 1,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2022%20V%20Acharya%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 2,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2022%20V%20Acharya%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 3,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2022%20V%20Acharya%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 1,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2024%20V%20Acharya%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 2,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2024%20V%20Acharya%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 3,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2024%20V%20Acharya%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 1,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2025%20V%20Acharya%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 2,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2025%20V%20Acharya%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 3,
+            "paper_title": "විනය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAV/2025%20V%20Acharya%20Vinaya%203.pdf"
+          }
+        ]
+      },
+      {
+        "name": "අභිධර්මචාර්ය",
+        "papers": [
+          {
+            "year": 2017,
+            "part": 1,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2017%20A%20Acharya%20abidamma%201.pdf"
+          },
+          {
+            "year": 2017,
+            "part": 2,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2017%20A%20Acharya%20abidamma%202.pdf"
+          },
+          {
+            "year": 2017,
+            "part": 3,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2017%20A%20Acharya%20abidamma%203.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 1,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2018%20A%20Acharya%20abidamma%201.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 2,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2018%20A%20Acharya%20abidamma%202.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 3,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2018%20A%20Acharya%20abidamma%203.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 1,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2019%20A%20Acharya%20ahidamma%201.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 2,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2019%20A%20Acharya%20abidamma%202.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 3,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2019%20A%20Acharya%20abidamma%203.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 1,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2020%20A%20Acharya%20abidamma%201.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 2,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2020%20A%20Acharya%20abidamma%202.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 3,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2020%20A%20Acharya%20abidamma%203.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 1,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2021%20A%20Acharya%20abidamma%201.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 2,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2021%20A%20Acharya%20abidamma%202.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 3,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2021%20A%20Acharya%20abidamma%203.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 1,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2022%20A%20Acharya%20abidamma%201.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 2,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2022%20A%20Acharya%20abidamma%202.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 3,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2022%20A%20Acharya%20abidamma%203.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 1,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2024%20A%20Acharya%20abidamma%201.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 2,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2024%20A%20Acharya%20abidamma%202.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 3,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2024%20A%20Acharya%20abidamma%203.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 1,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2025%20A%20Acharya%20abidamma%201.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 2,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2025%20A%20Acharya%20abidamma%202.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 3,
+            "paper_title": " අභිධර්මාචාර්ය පිටකය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TAA/2025%20A%20Acharya%20abidamma%203.pdf"
+          }
+        ]
+      },
+      {
+        "name": "සාමාන්‍ය ඥානය",
+        "papers": [
+          {
+            "year": 2017,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TASS/2017%20S%20Acharya%20Samanya.pdf"
+          },
+          {
+            "year": 2018,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TASS/2018%20S%20Acharya%20Samanya.pdf"
+          },
+          {
+            "year": 2019,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TASS/2019%20S%20Acharya%20Smanya.pdf"
+          },
+          {
+            "year": 2020,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TASS/2020%20S%20Acharya%20Samanya.pdf"
+          },
+          {
+            "year": 2021,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TASS/2021%20S%20Acharya%20Samanya.pdf"
+          },
+          {
+            "year": 2022,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TASS/2022%20S%20Acharya%20Samanya.pdf"
+          },
+          {
+            "year": 2024,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TASS/2024%20S%20Acharya%20samanya.pdf"
+          },
+          {
+            "year": 2025,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TA/TASS/2025%20S%20Acharya%20samanya.pdf"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "ත්‍රිපිටක විශාරද උපාධි පරීක්ෂණය",
+    "categories": [
+      {
+        "name": "සද්ධර්ම විශාරද",
+        "papers": [
+          {
+            "year": 2017,
+            "part": 1,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2017%20S%20Visharada%20Suthra%201.pdf"
+          },
+          {
+            "year": 2017,
+            "part": 2,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2017%20S%20Visharada%20Suthra%202.pdf"
+          },
+          {
+            "year": 2017,
+            "part": 3,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2017%20S%20Visharada%20Suthra%203.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 1,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2018%20S%20Visharada%20Suthra%201.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 2,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2018%20S%20Visharada%20Suthra%202.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 3,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2018%20S%20Visharada%20Suthra%203.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 1,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2019%20S%20Visharada%20Suthra%201.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 2,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2019%20S%20Visharada%20Suthra%202.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 3,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2019%20S%20Visharada%20Suthra%203.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 1,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2020%20S%20Visharada%20Suthra%201.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 2,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2020%20S%20Visharada%20Suthra%202.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 3,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2020%20S%20Visharada%20Suthra%203.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 1,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2021%20S%20Visharada%20Suthra%201.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 2,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2021%20S%20Visharada%20Suthra%202.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 3,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2021%20S%20Visharada%20Suthra%203.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 1,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2022%20S%20Visharada%20Suthra%201.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 2,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2022%20S%20Visharada%20Suthra%202.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 3,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2022%20S%20Visharada%20Suthra%203.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 1,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2024%20S%20Visharada%20Suthra%201.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 2,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2024%20S%20Visharada%20Suthra%202.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 3,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2024%20S%20Visharada%20Suthra%203.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 1,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2025%20S%20Visharada%20Suthra%201.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 2,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2025%20S%20Visharada%20Suthra%202.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 3,
+            "paper_title": "සද්ධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2025%20S%20Visharada%20Suthra%203.pdf"
+          }
+        ]
+      },
+      {
+        "name": "විනය විශාරද",
+        "papers": [
+          {
+            "year": 2017,
+            "part": 1,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2017%20V%20Visharada%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2017,
+            "part": 2,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2017%20V%20Visharada%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2017,
+            "part": 3,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2017%20V%20Visharada%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 1,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2018%20V%20Visharada%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 2,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2018%20V%20Visharada%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 3,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2018%20V%20Visharada%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 1,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2019%20V%20Visharada%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 2,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2019%20V%20Visharada%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 3,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2019%20V%20Visharada%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 1,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2020%20V%20Visharada%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 2,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2020%20V%20Visharada%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 3,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2020%20V%20Visharada%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 1,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2021%20V%20Visharada%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 2,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2021%20V%20Visharada%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 3,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2021%20V%20Visharada%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 1,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2022%20V%20Visharada%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 2,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2022%20V%20Visharada%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 3,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2022%20V%20Visharada%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 1,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2024%20V%20Visharada%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 2,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2024%20V%20Visharada%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 3,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2024%20V%20Visharada%20Vinaya%203.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 1,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2025%20V%20Visharada%20Vinaya%201.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 2,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2025%20V%20Visharada%20Vinaya%202.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 3,
+            "paper_title": "විනය විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Vinaya/2025%20V%20Visharada%20Vinaya%203.pdf"
+          }
+        ]
+      },
+      {
+        "name": "අභිධර්ම විශාරද",
+        "papers": [
+          {
+            "year": 2017,
+            "part": 1,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2017%20A%20Visharada%20abidamma%201.pdf"
+          },
+          {
+            "year": 2017,
+            "part": 2,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2017%20A%20Visharada%20abidamma%202.pdf"
+          },
+          {
+            "year": 2017,
+            "part": 3,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2017%20A%20Visharada%20abidamma%203.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 1,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2018%20A%20Visharada%20abidamma%201.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 2,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2018%20A%20Visharada%20abidamma%202.pdf"
+          },
+          {
+            "year": 2018,
+            "part": 3,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2018%20A%20Visharada%20abidamma%203.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 1,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2019%20A%20Visharada%20abidamma%201.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 2,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2019%20A%20Visharada%20abidamma%202.pdf"
+          },
+          {
+            "year": 2019,
+            "part": 3,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2019%20A%20Visharada%20abidamma%203.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 1,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2020%20A%20Visharada%20abidamma%201.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 2,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2020%20A%20Visharada%20abidamma%202.pdf"
+          },
+          {
+            "year": 2020,
+            "part": 3,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2020%20A%20Visharada%20abidamma%203.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 1,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2021%20A%20Visharada%20abidamma%201.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 2,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2021%20A%20Visharada%20abidamma%202.pdf"
+          },
+          {
+            "year": 2021,
+            "part": 3,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2021%20A%20Visharada%20abidamma%203.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 1,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2022%20A%20Visharada%20abidamma%201.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 2,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2022%20A%20Visharada%20abidamma%202.pdf"
+          },
+          {
+            "year": 2022,
+            "part": 3,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2022%20A%20Visharada%20abidamma%203.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 1,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2024%20A%20Visharada%20abidamma%201.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 2,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2024%20A%20Visharada%20abidamma%202.pdf"
+          },
+          {
+            "year": 2024,
+            "part": 3,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2024%20A%20Visharada%20abidamma%203.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 1,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2025%20A%20Visharada%20abidamma%201.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 2,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2025%20A%20Visharada%20abidamma%202.pdf"
+          },
+          {
+            "year": 2025,
+            "part": 3,
+            "paper_title": "අභිධර්ම විශාරද",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Abhidharma/2025%20A%20Visharada%20abidamma%203.pdf"
+          }
+        ]
+      },
+      {
+        "name": "සාමාන්‍ය ඥානය",
+        "papers": [
+          {
+            "year": 2017,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Samanya/2017%20S%20Visharada%20samanya.pdf"
+          },
+          {
+            "year": 2018,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Samanya/2018%20S%20Visharada%20samanya.pdf"
+          },
+          {
+            "year": 2019,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Samanya/2019%20S%20Visharada%20samanya.pdf"
+          },
+          {
+            "year": 2020,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Samanya/2020%20S%20Visharada%20samanya.pdf"
+          },
+          {
+            "year": 2021,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Samanya/2021%20S%20Visharada%20samanya.pdf"
+          },
+          {
+            "year": 2022,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Suthra/2023%20S%20Visharada%20samanya.pdf"
+          },
+          {
+            "year": 2024,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Samanya/2024%20S%20Visharada%20samanya.pdf"
+          },
+          {
+            "year": 2025,
+            "paper_title": "සාමාන්‍ය ඥානය",
+            "link": "https://raw.githubusercontent.com/Ransilu456/Thripitaka-Papers/ac07ad22a4ebac14094be4ee448b16356a56700d/Papers/TVP/Sadhdharma/Samanya/2025%20S%20Visharada%20samanya.pdf"
+          }
+        ]
+      }
+    ]
+  }
+]
