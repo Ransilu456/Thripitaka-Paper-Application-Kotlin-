@@ -1,0 +1,22 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Outer Circle -->
+    <path
+        android:pathData="M12,12m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0"
+        android:strokeColor="#FF000000"
+        android:strokeWidth="1.5" />
+    <!-- Inner Circle -->
+    <path
+        android:pathData="M12,12m-3,0a3,3 0,1 1,6 0a3,3 0,1 1,-6 0"
+        android:strokeColor="#FF000000"
+        android:strokeWidth="1.5" />
+    <!-- Spokes -->
+    <path
+        android:pathData="M12,2v7M12,15v7M2,12h7M15,12h7M4.93,4.93l4.95,4.95M14.12,14.12l4.95,4.95M4.93,19.07l4.95,-4.95M14.12,9.88l4.95,-4.95"
+        android:strokeColor="#FF000000"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round" />
+</vector>

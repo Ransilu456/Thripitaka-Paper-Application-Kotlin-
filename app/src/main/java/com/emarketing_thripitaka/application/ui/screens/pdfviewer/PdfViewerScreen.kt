@@ -27,16 +27,13 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.emarketing_thripitaka.application.ViewModelFactory
 import com.emarketing_thripitaka.application.ui.navigation.Screen
 import com.emarketing_thripitaka.application.ui.theme.AppColors
-import com.emarketing_thripitaka.application.ui.theme.ThripitakaPaperApplicationTheme
 import java.io.File
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -51,20 +48,38 @@ fun PdfViewerScreen(
         factory = ViewModelFactory(LocalContext.current.applicationContext as Application)
     )
 ) {
-    val isDark = isSystemInDarkTheme()
-    
     // Robust Decoding
     val decodedTitle = remember(paperTitle) { Screen.decode(paperTitle) }
     val decodedLink = remember(paperLink) { Screen.decode(paperLink) }
     val decodedPart = remember(part) { if (part == null || part == "null") null else Screen.decode(part) }
     val decodedYear = remember(year) { if (year == null || year == "null") null else Screen.decode(year) }
     
-    val fullTitle = if (decodedPart != null) "$decodedTitle - Part $decodedPart" else decodedTitle
     val loadState by viewModel.loadState.collectAsState()
 
     LaunchedEffect(decodedLink) {
         viewModel.loadPdf(decodedLink)
     }
+
+    PdfViewerContent(
+        loadState = loadState,
+        title = decodedTitle,
+        year = decodedYear,
+        part = decodedPart,
+        onBackClick = { navController.popBackStack() }
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun PdfViewerContent(
+    loadState: PdfLoadState,
+    title: String,
+    year: String?,
+    part: String?,
+    onBackClick: () -> Unit
+) {
+    val isDark = isSystemInDarkTheme()
+    val fullTitle = if (part != null) "$title - Part $part" else title
 
     Scaffold(
         topBar = {
@@ -79,9 +94,9 @@ fun PdfViewerScreen(
                             maxLines = 1,
                             overflow = TextOverflow.Ellipsis
                         )
-                        if (decodedYear != null) {
+                        if (year != null) {
                             Text(
-                                text = decodedYear, 
+                                text = year, 
                                 fontSize = 12.sp, 
                                 color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.7f)
                             )
@@ -90,7 +105,7 @@ fun PdfViewerScreen(
                 },
                 navigationIcon = {
                     IconButton(
-                        onClick = { navController.popBackStack() },
+                        onClick = onBackClick,
                         modifier = Modifier
                             .padding(start = 8.dp)
                             .clip(CircleShape)
@@ -130,7 +145,7 @@ fun PdfViewerScreen(
                 is PdfLoadState.Error -> {
                     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                         Text(
-                            text = state.message, 
+                            text = state.message,
                             color = MaterialTheme.colorScheme.error, 
                             modifier = Modifier.padding(16.dp),
                             textAlign = TextAlign.Center
@@ -148,7 +163,7 @@ fun NativePdfViewer(file: File) {
     val renderer = try {
         val input = ParcelFileDescriptor.open(file, ParcelFileDescriptor.MODE_READ_ONLY)
         PdfRenderer(input)
-    } catch (e: Exception) {
+    } catch (_: Exception) {
         null
     }
     
@@ -170,8 +185,8 @@ fun NativePdfViewer(file: File) {
             items(count = pageCount, key = { it }) { index ->
                 val bitmap = remember(index) {
                     val page = renderer.openPage(index)
-                    val width = (page.width * 2).toInt()
-                    val height = (page.height * 2).toInt()
+                    val width = (page.width * 2)
+                    val height = (page.height * 2)
                     val bmp = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888)
                     
                     val canvas = Canvas(bmp)
@@ -217,19 +232,5 @@ fun NativePdfViewer(file: File) {
         onDispose {
             renderer.close()
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun PdfViewerScreenPreview() {
-    ThripitakaPaperApplicationTheme {
-        PdfViewerScreen(
-            navController = rememberNavController(),
-            paperLink = "example.pdf",
-            paperTitle = "Sample Paper",
-            year = "2023",
-            part = "1"
-        )
     }
 }

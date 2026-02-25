@@ -16,24 +16,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.scale
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.foundation.interaction.collectIsPressedAsState
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material3.Icon
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.emarketing_thripitaka.application.ui.theme.AppColors
+import com.emarketing_thripitaka.application.ui.theme.ThripitakaPaperApplicationTheme
 
-/**
- * A premium, high-quality custom button following modern UI/UX principles.
- * Features: 
- * - Dynamic theme-aware gradients
- * - Smooth scale animations on press
- * - Elevation and depth perception
- * - Accessible and idiomatic structure
- */
 @Composable
 fun CustomButton(
     title: String,
@@ -42,7 +38,7 @@ fun CustomButton(
     icon: @Composable (() -> Unit)? = null,
     rightIcon: @Composable (() -> Unit)? = null,
     enabled: Boolean = true,
-    isDark: Boolean = false // Parameter kept for compatibility, but now uses AppColors
+    isDark: Boolean = false // Parameter kept for compatibility
 ) {
     val interactionSource = remember { MutableInteractionSource() }
     val isPressed by interactionSource.collectIsPressedAsState()
@@ -124,6 +120,20 @@ fun CustomButton(
                     }
                 }
             }
+        }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun CustomButtonPreview() {
+    ThripitakaPaperApplicationTheme {
+        Box(modifier = Modifier.padding(16.dp)) {
+            CustomButton(
+                title = "Next",
+                onPress = {},
+                rightIcon = { Icon(Icons.Default.ArrowForward, null, tint = Color.White) }
+            )
         }
     }
 }

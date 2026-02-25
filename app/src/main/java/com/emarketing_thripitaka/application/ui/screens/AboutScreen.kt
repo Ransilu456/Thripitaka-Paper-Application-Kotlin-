@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -30,6 +31,7 @@ import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.emarketing_thripitaka.application.R
 import com.emarketing_thripitaka.application.ui.components.AboutCard
 import com.emarketing_thripitaka.application.ui.components.SocialButton
 import com.emarketing_thripitaka.application.ui.theme.*
@@ -76,7 +78,7 @@ fun AboutScreen(
                             )
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Menu,
+                            painter = painterResource(id = R.drawable.ic_solar_menu),
                             contentDescription = "Menu",
                             tint = iconTint
                         )
@@ -224,12 +226,12 @@ fun AboutScreen(
 
                 // Footer
                 Text(
-                    text = "Version 1.0.1",
+                    text = "Version 1.0.2",
                     color = AppColors.unselected(),
                     fontSize = 14.sp
                 )
                 Text(
-                    text = "© 2026 E-Marketing Paradise Design Lab",
+                    text = "© 2026 E-Marketing Paradice Design Lab",
                     color = AppColors.unselected().copy(alpha = 0.7f),
                     fontSize = 12.sp
                 )

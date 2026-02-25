@@ -8,12 +8,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
-import androidx.compose.material.icons.outlined.Delete
-import androidx.compose.material.icons.outlined.Download
-import androidx.compose.material.icons.outlined.FolderOpen
-import androidx.compose.material.icons.outlined.Print
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -23,13 +17,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.emarketing_thripitaka.application.R
 import com.emarketing_thripitaka.application.ViewModelFactory
 import com.emarketing_thripitaka.application.model.DownloadItem
@@ -49,9 +41,45 @@ fun DownloadsScreen(
     )
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    val context = LocalContext.current
+
+    DownloadsScreenContent(
+        uiState = uiState,
+        onMenuClick = { scope.launch { drawerState.open() } },
+        onOpenItem = { item ->
+            navController.navigate(
+                Screen.PdfViewer.createRoute(
+                    paperLink = item.uri,
+                    paperTitle = item.title,
+                    year = item.year,
+                    part = item.part
+                )
+            )
+        },
+        onDeleteClick = { viewModel.showDeleteConfirmation(it) },
+        onExportClick = { viewModel.exportDownload(it) },
+        onPrintClick = { viewModel.printDownload(context, it) },
+        onConfirmDelete = { viewModel.deleteDownload(it) },
+        onDismissDelete = { viewModel.hideDeleteConfirmation() },
+        onClearMessage = { viewModel.clearMessage() }
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun DownloadsScreenContent(
+    uiState: DownloadsUiState,
+    onMenuClick: () -> Unit,
+    onOpenItem: (DownloadItem) -> Unit,
+    onDeleteClick: (DownloadItem) -> Unit,
+    onExportClick: (DownloadItem) -> Unit,
+    onPrintClick: (DownloadItem) -> Unit,
+    onConfirmDelete: (DownloadItem) -> Unit,
+    onDismissDelete: () -> Unit,
+    onClearMessage: () -> Unit
+) {
     val isDark = isSystemInDarkTheme()
     val snackbarHostState = remember { SnackbarHostState() }
-    val context = LocalContext.current
 
     val gradientColors = if (isDark) {
         listOf(AppColors.background(), Color(0xFF0A0A0A))
@@ -62,7 +90,7 @@ fun DownloadsScreen(
     LaunchedEffect(uiState.message) {
         uiState.message?.let {
             snackbarHostState.showSnackbar(it)
-            viewModel.clearMessage()
+            onClearMessage()
         }
     }
 
@@ -73,14 +101,14 @@ fun DownloadsScreen(
             CenterAlignedTopAppBar(
                 title = { 
                     Text(
-                        "Downloads", 
+                        "බාගත කිරීම්",
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onBackground
                     ) 
                 },
                 navigationIcon = {
                     IconButton(
-                        onClick = { scope.launch { drawerState.open() } },
+                        onClick = onMenuClick,
                         modifier = Modifier
                             .padding(start = 8.dp)
                             .background(
@@ -89,7 +117,7 @@ fun DownloadsScreen(
                             )
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Menu,
+                            painter = painterResource(id = R.drawable.ic_solar_menu),
                             contentDescription = "Menu",
                             tint = if (isDark) Color.White else Color.Black
                         )
@@ -98,7 +126,8 @@ fun DownloadsScreen(
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color.Transparent,
                     scrolledContainerColor = Color.Transparent
-                )
+                ),
+                windowInsets = WindowInsets(0, 0, 0, 0)
             )
         }
     ) { innerPadding ->
@@ -112,14 +141,14 @@ fun DownloadsScreen(
                 Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         Icon(
-                            imageVector = Icons.Outlined.FolderOpen,
+                            painter = painterResource(id = R.drawable.ic_solar_documents),
                             contentDescription = null,
                             modifier = Modifier.size(80.dp),
                             tint = AppColors.primary().copy(alpha = 0.5f)
                         )
                         Spacer(modifier = Modifier.height(16.dp))
                         Text(
-                            "No downloads found",
+                            "බාගත කිරීම් හමු නොවීය",
                             style = MaterialTheme.typography.titleMedium,
                             color = MaterialTheme.colorScheme.onSurfaceVariant
                         )
@@ -134,19 +163,10 @@ fun DownloadsScreen(
                     items(uiState.downloads) { item ->
                         DownloadListItem(
                             item = item,
-                            onOpen = {
-                                navController.navigate(
-                                    Screen.PdfViewer.createRoute(
-                                        paperLink = item.uri,
-                                        paperTitle = item.title,
-                                        year = item.year,
-                                        part = item.part
-                                    )
-                                )
-                            },
-                            onDelete = { viewModel.showDeleteConfirmation(item) },
-                            onExport = { viewModel.exportDownload(item) },
-                            onPrint = { viewModel.printDownload(context, item) }
+                            onOpen = { onOpenItem(item) },
+                            onDelete = { onDeleteClick(item) },
+                            onExport = { onExportClick(item) },
+                            onPrint = { onPrintClick(item) }
                         )
                     }
                 }
@@ -160,20 +180,20 @@ fun DownloadsScreen(
 
     uiState.showDeleteDialog?.let { item ->
         AlertDialog(
-            onDismissRequest = { viewModel.hideDeleteConfirmation() },
-            title = { Text("Delete Paper") },
-            text = { Text("Are you sure you want to delete '${item.title}'?") },
+            onDismissRequest = onDismissDelete,
+            title = { Text("ප්‍රශ්න පත්‍රය මකන්න (Delete Paper)") },
+            text = { Text("'${item.title}' මකා දැමීමට ඔබට විශ්වාසද?") },
             confirmButton = {
                 TextButton(
-                    onClick = { viewModel.deleteDownload(item) },
+                    onClick = { onConfirmDelete(item) },
                     colors = ButtonDefaults.textButtonColors(contentColor = MaterialTheme.colorScheme.error)
                 ) {
-                    Text("Delete")
+                    Text("මකන්න (Delete)")
                 }
             },
             dismissButton = {
-                TextButton(onClick = { viewModel.hideDeleteConfirmation() }) {
-                    Text("Cancel")
+                TextButton(onClick = onDismissDelete) {
+                    Text("අවලංගු කරන්න (Cancel)")
                 }
             }
         )
@@ -188,7 +208,7 @@ fun DownloadListItem(
     onExport: () -> Unit,
     onPrint: () -> Unit
 ) {
-    var expanded by remember { mutableStateOf(false) }
+    var expanded by remember { mutableStateOf(true) }
 
     Card(
         modifier = Modifier.fillMaxWidth().animateContentSize(),
@@ -196,7 +216,6 @@ fun DownloadListItem(
         colors = CardDefaults.cardColors(
             containerColor = AppColors.surface()
         ),
-        elevation = CardDefaults.cardElevation(defaultElevation = 2.dp),
         onClick = { expanded = !expanded }
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
@@ -261,20 +280,20 @@ fun DownloadListItem(
                         shape = RoundedCornerShape(8.dp),
                         contentPadding = PaddingValues(horizontal = 16.dp)
                     ) {
-                        Icon(Icons.Default.OpenInNew, null, modifier = Modifier.size(18.dp))
+                        Icon(painterResource(id = R.drawable.ic_solar_magnifer), null, modifier = Modifier.size(18.dp))
                         Spacer(modifier = Modifier.width(8.dp))
                         Text("Open")
                     }
                     
                     Row {
                         IconButton(onClick = onPrint) {
-                            Icon(Icons.Outlined.Print, null, tint = AppColors.unselected())
+                            Icon(painterResource(id = R.drawable.ic_solar_printer), null, tint = AppColors.unselected(), modifier = Modifier.size(22.dp))
                         }
                         IconButton(onClick = onExport) {
-                            Icon(Icons.Outlined.Download, null, tint = AppColors.unselected())
+                            Icon(painterResource(id = R.drawable.ic_solar_download_square), null, tint = AppColors.unselected(), modifier = Modifier.size(22.dp))
                         }
                         IconButton(onClick = onDelete) {
-                            Icon(Icons.Outlined.Delete, null, tint = MaterialTheme.colorScheme.error.copy(alpha = 0.7f))
+                            Icon(painterResource(id = R.drawable.ic_solar_trash_bin_trash), null, tint = MaterialTheme.colorScheme.error.copy(alpha = 0.7f), modifier = Modifier.size(22.dp))
                         }
                     }
                 }
@@ -287,10 +306,28 @@ fun DownloadListItem(
 @Composable
 fun DownloadsScreenPreview() {
     ThripitakaPaperApplicationTheme {
-        DownloadsScreen(
-            navController = rememberNavController(),
-            drawerState = rememberDrawerState(initialValue = DrawerValue.Closed),
-            scope = rememberCoroutineScope()
+        DownloadsScreenContent(
+            uiState = DownloadsUiState(
+                isLoading = false,
+                downloads = listOf(
+                    DownloadItem(
+                        title = "Dhamma Paper",
+                        exam = "Pravachana",
+                        year = "2023",
+                        part = "1",
+                        category = "Preliminary",
+                        uri = "path/to/file.pdf"
+                    )
+                )
+            ),
+            onMenuClick = {},
+            onOpenItem = {},
+            onDeleteClick = {},
+            onExportClick = {},
+            onPrintClick = {},
+            onConfirmDelete = {},
+            onDismissDelete = {},
+            onClearMessage = {}
         )
     }
 }

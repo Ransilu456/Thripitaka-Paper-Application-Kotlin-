@@ -7,23 +7,29 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
+import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
+import com.emarketing_thripitaka.application.R
 import com.emarketing_thripitaka.application.ui.navigation.DrawerNavItem
 import com.emarketing_thripitaka.application.ui.navigation.Screen
 import com.emarketing_thripitaka.application.ui.theme.AppColors
+import com.emarketing_thripitaka.application.ui.theme.ThripitakaPaperApplicationTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
@@ -125,7 +131,7 @@ fun AppDrawer(
         // Drawer Items
         drawerItems.forEach { item ->
             DrawerItem(
-                icon = item.icon,
+                icon = painterResource(id = item.iconRes),
                 label = item.label,
                 selected = currentRoute == item.route,
                 onClick = {
@@ -209,7 +215,7 @@ fun AppDrawer(
 
 @Composable
 private fun DrawerItem(
-    icon: ImageVector, 
+    icon: Painter, 
     label: String, 
     selected: Boolean, 
     onClick: () -> Unit
@@ -217,8 +223,9 @@ private fun DrawerItem(
     NavigationDrawerItem(
         icon = { 
             Icon(
-                imageVector = icon, 
-                contentDescription = null
+                painter = icon, 
+                contentDescription = null,
+                modifier = Modifier.size(24.dp)
             ) 
         },
         label = { 
@@ -242,4 +249,26 @@ private fun DrawerItem(
             .padding(horizontal = 12.dp, vertical = 2.dp)
             .height(56.dp)
     )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun AppDrawerPreview() {
+    ThripitakaPaperApplicationTheme {
+        val navController = rememberNavController()
+        val drawerState = rememberDrawerState(DrawerValue.Open)
+        val scope = rememberCoroutineScope()
+        ModalNavigationDrawer(
+            drawerState = drawerState,
+            drawerContent = {
+                AppDrawer(
+                    navController = navController,
+                    drawerState = drawerState,
+                    scope = scope
+                )
+            }
+        ) {
+            Box(Modifier.fillMaxSize())
+        }
+    }
 }

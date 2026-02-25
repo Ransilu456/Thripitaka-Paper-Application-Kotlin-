@@ -1,20 +1,21 @@
 package com.emarketing_thripitaka.application.ui.layout
 
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.consumeWindowInsets
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.systemBars
+import androidx.compose.animation.*
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.emarketing_thripitaka.application.ui.components.AppBottomBar
 import com.emarketing_thripitaka.application.ui.components.AppDrawer
 import com.emarketing_thripitaka.application.ui.navigation.NavGraph
 import com.emarketing_thripitaka.application.ui.navigation.Screen
+import com.emarketing_thripitaka.application.ui.theme.ThripitakaPaperApplicationTheme
 
 @Composable
 fun AppLayout() {
@@ -35,7 +36,7 @@ fun AppLayout() {
 
     ModalNavigationDrawer(
         drawerState = drawerState,
-        gesturesEnabled = drawerState.isOpen, // Only enable gestures when open to avoid conflicts
+        gesturesEnabled = drawerState.isOpen,
         drawerContent = { 
             AppDrawer(
                 navController = navController,
@@ -46,12 +47,15 @@ fun AppLayout() {
     ) {
         Scaffold(
             bottomBar = {
-                if (showBottomBar) {
+                AnimatedVisibility(
+                    visible = showBottomBar,
+                    enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
+                    exit = slideOutVertically(targetOffsetY = { it }) + fadeOut()
+                ) {
                     AppBottomBar(navController)
                 }
             }
         ) { innerPadding ->
-            // We apply padding from Scaffold but also handle insets
             NavGraph(
                 navController = navController,
                 modifier = Modifier
@@ -61,5 +65,13 @@ fun AppLayout() {
                 scope = scope
             )
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun AppLayoutPreview() {
+    ThripitakaPaperApplicationTheme {
+        AppLayout()
     }
 }

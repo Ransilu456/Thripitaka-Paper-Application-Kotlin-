@@ -7,9 +7,6 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Eco
-import androidx.compose.material.icons.filled.Menu
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -17,6 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -24,7 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
+import com.emarketing_thripitaka.application.R
 import com.emarketing_thripitaka.application.ViewModelFactory
 import com.emarketing_thripitaka.application.ui.components.CustomButton
 import com.emarketing_thripitaka.application.ui.navigation.Screen
@@ -43,6 +41,43 @@ fun HomeScreen(
     )
 ) {
     val uiState by viewModel.uiState.collectAsState()
+    
+    HomeScreenContent(
+        uiState = uiState,
+        onMenuClick = { scope.launch { drawerState.open() } },
+        onExamSelected = { viewModel.onExamSelected(it) },
+        onCategorySelected = { viewModel.onCategorySelected(it) },
+        onYearSelected = { viewModel.onYearSelected(it) },
+        onPartSelected = { viewModel.onPartSelected(it) },
+        onNextClick = {
+            if (uiState.selectedExam.isNotEmpty() && uiState.selectedCategory.isNotEmpty() && uiState.selectedPaper != null) {
+                val paper = uiState.selectedPaper!!
+                navController.navigate(
+                    Screen.PaperInfo.createRoute(
+                        exam = uiState.selectedExam,
+                        category = uiState.selectedCategory,
+                        paperTitle = paper.paper_title,
+                        paperLink = paper.link,
+                        part = uiState.selectedPart,
+                        year = uiState.selectedYear
+                    )
+                )
+            }
+        }
+    )
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun HomeScreenContent(
+    uiState: HomeUiState,
+    onMenuClick: () -> Unit,
+    onExamSelected: (String) -> Unit,
+    onCategorySelected: (String) -> Unit,
+    onYearSelected: (String) -> Unit,
+    onPartSelected: (String) -> Unit,
+    onNextClick: () -> Unit
+) {
     val isDark = isSystemInDarkTheme()
     val iconTint = if (isDark) Color.White else Color.Black
     var showValidationAlert by remember { mutableStateOf(false) }
@@ -58,14 +93,13 @@ fun HomeScreen(
             .fillMaxSize()
             .background(Brush.verticalGradient(gradientColors))
     ) {
-        // Eco Icon Background - Positioned at the very top right corner
         Icon(
-            imageVector = Icons.Default.Eco,
+            painter = painterResource(id = R.drawable.ic_dharmachakra),
             contentDescription = null,
             modifier = Modifier
                 .align(Alignment.TopEnd)
                 .offset(x = 20.dp, y = (-20).dp)
-                .size(120.dp),
+                .size(150.dp),
             tint = if (isDark) Color.White.copy(alpha = 0.05f) else Color(0xFFFFA601).copy(alpha = 0.08f)
         )
 
@@ -74,14 +108,14 @@ fun HomeScreen(
                 CenterAlignedTopAppBar(
                     title = {
                         Text(
-                            "Home",
+                            "මුල් පිටුව",
                             fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onBackground
                         )
                     },
                     navigationIcon = {
                         IconButton(
-                            onClick = { scope.launch { drawerState.open() } },
+                            onClick = onMenuClick,
                             modifier = Modifier
                                 .padding(start = 8.dp)
                                 .background(
@@ -90,7 +124,7 @@ fun HomeScreen(
                                 )
                         ) {
                             Icon(
-                                imageVector = Icons.Default.Menu,
+                                painter = painterResource(id = R.drawable.ic_solar_menu),
                                 contentDescription = "Menu",
                                 tint = iconTint
                             )
@@ -99,7 +133,8 @@ fun HomeScreen(
                     colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                         containerColor = Color.Transparent,
                         scrolledContainerColor = Color.Transparent
-                    )
+                    ),
+                    windowInsets = WindowInsets(0, 0, 0, 0)
                 )
             },
             containerColor = Color.Transparent
@@ -152,21 +187,21 @@ fun HomeScreen(
                                 label = "විභාගය",
                                 options = uiState.exams.map { it.title },
                                 selectedOption = uiState.selectedExam,
-                                onOptionSelected = { viewModel.onExamSelected(it) }
+                                onOptionSelected = onExamSelected
                             )
 
                             AppDropdown(
                                 label = "කාණ්ඩය තෝරන්න...",
                                 options = uiState.availableCategories,
                                 selectedOption = uiState.selectedCategory,
-                                onOptionSelected = { viewModel.onCategorySelected(it) }
+                                onOptionSelected = onCategorySelected
                             )
 
                             AppDropdown(
                                 label = "වර්ෂය තෝරන්න...",
                                 options = uiState.availableYears.map { "${it.paper_title} (${it.year})" },
                                 selectedOption = if (uiState.selectedYear.isEmpty()) "" else "${uiState.selectedPaper?.paper_title ?: ""} (${uiState.selectedYear})",
-                                onOptionSelected = { viewModel.onYearSelected(it) }
+                                onOptionSelected = onYearSelected
                             )
 
                             if (uiState.availableParts.isNotEmpty()) {
@@ -174,7 +209,7 @@ fun HomeScreen(
                                     label = "පත්‍රය තෝරන්න...",
                                     options = uiState.availableParts,
                                     selectedOption = if (uiState.selectedPart.isEmpty()) "" else "Part ${uiState.selectedPart}",
-                                    onOptionSelected = { viewModel.onPartSelected(it) }
+                                    onOptionSelected = onPartSelected
                                 )
                             }
 
@@ -205,17 +240,7 @@ fun HomeScreen(
                                 title = "Next",
                                 onPress = {
                                     if (uiState.selectedExam.isNotEmpty() && uiState.selectedCategory.isNotEmpty() && uiState.selectedPaper != null) {
-                                        val paper = uiState.selectedPaper!!
-                                        navController.navigate(
-                                            Screen.PaperInfo.createRoute(
-                                                exam = uiState.selectedExam,
-                                                category = uiState.selectedCategory,
-                                                paperTitle = paper.paper_title,
-                                                paperLink = paper.link,
-                                                part = uiState.selectedPart,
-                                                year = uiState.selectedYear
-                                            )
-                                        )
+                                        onNextClick()
                                     } else {
                                         showValidationAlert = true
                                     }
@@ -303,9 +328,18 @@ fun AppDropdown(
 @Composable
 fun HomeScreenPreview() {
     ThripitakaPaperApplicationTheme {
-        val navController = rememberNavController()
-        val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
-        val scope = rememberCoroutineScope()
-        HomeScreen(navController = navController, drawerState = drawerState, scope = scope)
+        HomeScreenContent(
+            uiState = HomeUiState(
+                isLoading = false,
+                selectedExam = "Pravachana",
+                selectedCategory = "Preliminary"
+            ),
+            onMenuClick = {},
+            onExamSelected = {},
+            onCategorySelected = {},
+            onYearSelected = {},
+            onPartSelected = {},
+            onNextClick = {}
+        )
     }
 }

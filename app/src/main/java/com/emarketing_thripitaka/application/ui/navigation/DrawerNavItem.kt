@@ -1,13 +1,9 @@
 package com.emarketing_thripitaka.application.ui.navigation
 
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Info
-import androidx.compose.material.icons.filled.Star
-import androidx.compose.ui.graphics.vector.ImageVector
+import com.emarketing_thripitaka.application.R
 
-sealed class DrawerNavItem(val route: String, val icon: ImageVector, val label: String) {
-    object Home : DrawerNavItem("home", Icons.Default.Home, "මුල් පිටුව")
-    object Services : DrawerNavItem("services", Icons.Default.Star, "අපගේ සේවාවන්")
-    object About : DrawerNavItem("about", Icons.Default.Info, "අප ගැන")
+sealed class DrawerNavItem(val route: String, val iconRes: Int, val label: String) {
+    object Home : DrawerNavItem("home", R.drawable.ic_solar_home_smile, "මුල් පිටුව")
+    object Services : DrawerNavItem("services", R.drawable.ic_solar_user_id, "අපගේ සේවාවන්")
+    object About : DrawerNavItem("about", R.drawable.ic_solar_user_circle, "අප ගැන")
 }
