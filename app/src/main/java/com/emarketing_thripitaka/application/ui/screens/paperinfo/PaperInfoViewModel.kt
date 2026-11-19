@@ -3,8 +3,11 @@ package com.emarketing_thripitaka.application.ui.screens.paperinfo
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.emarketing_thripitaka.application.data.BookmarkManager
+import com.emarketing_thripitaka.application.data.BookmarkedPaper
 import com.emarketing_thripitaka.application.data.DownloadManager
 import com.emarketing_thripitaka.application.model.DownloadItem
+import com.emarketing_thripitaka.application.model.Paper
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import java.io.File
@@ -14,9 +17,9 @@ import java.nio.charset.StandardCharsets
 class PaperInfoViewModel(application: Application) : AndroidViewModel(application) {
 
     private val downloadManager = DownloadManager(application)
+    private val bookmarkManager = BookmarkManager(application)
     
     private val _downloadUrl = MutableStateFlow<String?>(null)
-    
     private val _isDownloading = MutableStateFlow(false)
     private val _downloadProgress = MutableStateFlow(0f)
     private val _errorMessage = MutableStateFlow<String?>(null)
@@ -28,7 +31,8 @@ class PaperInfoViewModel(application: Application) : AndroidViewModel(applicatio
         _isDownloading,
         _downloadProgress,
         _errorMessage,
-        _isSuccess
+        _isSuccess,
+        bookmarkManager.bookmarks
     ) { args: Array<Any?> ->
         val url = args[0] as? String
         @Suppress("UNCHECKED_CAST")
@@ -37,11 +41,17 @@ class PaperInfoViewModel(application: Application) : AndroidViewModel(applicatio
         val progress = args[3] as Float
         val error = args[4] as? String
         val success = args[5] as Boolean
+        @Suppress("UNCHECKED_CAST")
+        val bookmarks = args[6] as List<BookmarkedPaper>
 
         val localPath = if (url != null) {
             downloads.find { it.url == url || it.uri.contains(url.split("/").last()) }?.uri
                 ?.let { path -> if (File(path).exists()) path else null }
         } else null
+
+        val isBookmarked = if (url != null) {
+            bookmarks.any { it.paper.link == url }
+        } else false
 
         PaperInfoUiState(
             isDownloading = isDownloading,
@@ -49,7 +59,8 @@ class PaperInfoViewModel(application: Application) : AndroidViewModel(applicatio
             errorMessage = error,
             isSuccess = success,
             localPath = localPath,
-            isCheckingDownload = false
+            isCheckingDownload = false,
+            isBookmarked = isBookmarked
         )
     }.stateIn(
         scope = viewModelScope,
@@ -62,10 +73,13 @@ class PaperInfoViewModel(application: Application) : AndroidViewModel(applicatio
         _downloadUrl.value = decodedLink
     }
 
-    // Deprecated but kept for backward compatibility if Screen still calls it, 
-    // though we should prefer initUrl
-    fun checkIfDownloaded(url: String) {
-        initUrl(url)
+    fun toggleBookmark(exam: String, category: String, title: String, link: String, year: String?, part: String?) {
+        val yrInt = year?.toIntOrNull() ?: 0
+        val prtInt = part?.toIntOrNull()
+        val paper = Paper(part = prtInt, year = yrInt, paper_title = title, link = link)
+        viewModelScope.launch {
+            bookmarkManager.toggleBookmark(exam, category, paper)
+        }
     }
 
     fun downloadPaper(

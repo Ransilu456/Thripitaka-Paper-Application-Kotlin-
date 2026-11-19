@@ -2,6 +2,7 @@ package com.emarketing_thripitaka.application.ui.screens.paperinfo
 
 import android.app.Application
 import android.content.Intent
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -12,6 +13,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
+import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.BookmarkBorder
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -23,8 +26,8 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.compose.ui.tooling.preview.Wallpapers
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.content.FileProvider
@@ -63,6 +66,7 @@ fun PaperInfoScreen(
         year = year,
         onBackClick = { navController.popBackStack() },
         onInitUrl = { viewModel.initUrl(it) },
+        onToggleBookmark = { viewModel.toggleBookmark(exam, category, paperTitle, paperLink, year, part) },
         onOpenPaper = { path, title, yr, prt ->
             navController.navigate(Screen.PdfViewer.createRoute(path, title, yr, prt))
         },
@@ -84,6 +88,7 @@ fun PaperInfoContent(
     year: String?,
     onBackClick: () -> Unit,
     onInitUrl: (String) -> Unit,
+    onToggleBookmark: () -> Unit,
     onOpenPaper: (path: String, title: String, year: String?, part: String?) -> Unit,
     onDownloadClick: (link: String, title: String, category: String, exam: String, year: String?, part: String?) -> Unit
 ) {
@@ -111,12 +116,12 @@ fun PaperInfoContent(
     Scaffold(
         topBar = {
             CenterAlignedTopAppBar(
-                title = { 
+                title = {
                     Text(
                         "ප්‍රශ්න පත්‍ර තොරතුරු",
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onBackground
-                    ) 
+                    )
                 },
                 navigationIcon = {
                     IconButton(
@@ -131,7 +136,15 @@ fun PaperInfoContent(
                         Icon(Icons.AutoMirrored.Filled.ArrowBack, "Back", tint = if (isDark) Color.White else Color.Black)
                     }
                 },
-
+                actions = {
+                    IconButton(onClick = onToggleBookmark) {
+                        Icon(
+                            imageVector = if (uiState.isBookmarked) Icons.Default.Bookmark else Icons.Default.BookmarkBorder,
+                            contentDescription = "Bookmark",
+                            tint = if (uiState.isBookmarked) AppColors.primary() else (if (isDark) Color.White else Color.Black)
+                        )
+                    }
+                },
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color.Transparent,
                     scrolledContainerColor = Color.Transparent
@@ -146,7 +159,7 @@ fun PaperInfoContent(
             modifier = Modifier
                 .fillMaxSize()
                 .background(Brush.verticalGradient(
-                    if (isDark) listOf(AppColors.background(), Color(0xFF0A0A0A)) 
+                    if (isDark) listOf(AppColors.background(), Color(0xFF0A0A0A))
                     else listOf(BackgroundLightStart, Color(0xFFFFEAC6))
                 ))
                 .padding(innerPadding)
@@ -201,14 +214,14 @@ fun PaperInfoContent(
                                 modifier = Modifier.weight(1f)
                             )
                         }
-                        
+
                         if (decodedYear != null) {
                             HorizontalDivider(modifier = Modifier.padding(vertical = 12.dp), color = AppColors.unselected().copy(0.1f))
                             Row(modifier = Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
                                 Icon(
-                                    painterResource(id = R.drawable.ic_solar_medal_ribbon_star), 
-                                    null, 
-                                    tint = AppColors.primary(), 
+                                    painterResource(id = R.drawable.ic_solar_medal_ribbon_star),
+                                    null,
+                                    tint = AppColors.primary(),
                                     modifier = Modifier.size(28.dp).background(AppColors.primary().copy(0.1f), CircleShape).padding(6.dp)
                                 )
                                 Spacer(modifier = Modifier.width(16.dp))
@@ -224,8 +237,9 @@ fun PaperInfoContent(
                 Spacer(modifier = Modifier.height(32.dp))
 
                 // Action Buttons
-                val isDownloaded = uiState.localPath != null
-                
+                val localPath = uiState.localPath
+                val isDownloaded = localPath != null
+
                 if (uiState.isCheckingDownload) {
                     Box(modifier = Modifier.fillMaxWidth(), contentAlignment = Alignment.Center) {
                         CircularProgressIndicator(color = AppColors.primary())
@@ -234,7 +248,7 @@ fun PaperInfoContent(
                     Column(modifier = Modifier.fillMaxWidth()) {
                         CustomButton(
                             title = if (isDownloaded) "ප්‍රශ්න පත්‍රය විවෘත කරන්න (Open Paper)" else "ප්‍රශ්න පත්‍රය බලන්න (View Online)",
-                            icon = { 
+                            icon = {
                                 if (isDownloaded) {
                                     Icon(painterResource(id = R.drawable.ic_solar_document_text), null, tint = Color.White)
                                 } else {
@@ -242,14 +256,14 @@ fun PaperInfoContent(
                                 }
                             },
                             onPress = {
-                                val pathToOpen = uiState.localPath ?: decodedLink
+                                val pathToOpen = localPath ?: decodedLink
                                 onOpenPaper(pathToOpen, decodedTitle, decodedYear, decodedPart)
                             },
                             modifier = Modifier.fillMaxWidth()
                         )
-                        
+
                         Spacer(modifier = Modifier.height(16.dp))
-                        
+
                         if (!isDownloaded) {
                             OutlinedButton(
                                 onClick = {
@@ -259,7 +273,7 @@ fun PaperInfoContent(
                                 },
                                 modifier = Modifier.fillMaxWidth().height(56.dp),
                                 shape = RoundedCornerShape(18.dp),
-                                border = androidx.compose.foundation.BorderStroke(1.dp, AppColors.primary()),
+                                border = BorderStroke(1.dp, AppColors.primary()),
                                 enabled = !uiState.isDownloading
                             ) {
                                 if (uiState.isDownloading) {
@@ -288,12 +302,12 @@ fun PaperInfoContent(
                                     Text("මෙම ප්‍රශ්න පත්‍රය සාර්ථකව බාගත කර ඇත", color = Color(0xFF2E7D32), fontWeight = FontWeight.Bold, fontSize = 14.sp)
                                 }
                             }
-                            
+
                             Spacer(modifier = Modifier.height(12.dp))
                             TextButton(
                                 onClick = {
                                     try {
-                                        val file = File(uiState.localPath!!)
+                                        val file = File(localPath)
                                         if (file.exists()) {
                                             val uri = FileProvider.getUriForFile(context, "${context.packageName}.fileprovider", file)
                                             val intent = Intent(Intent.ACTION_SEND).apply {
@@ -304,7 +318,6 @@ fun PaperInfoContent(
                                             context.startActivity(Intent.createChooser(intent, "ප්‍රශ්න පත්‍රය බෙදාගන්න"))
                                         }
                                     } catch (_: Exception) {
-                                        // Error handling for share
                                     }
                                 },
                                 modifier = Modifier.fillMaxWidth()
@@ -333,7 +346,7 @@ fun PaperDetailItem(icon: Int, label: String, value: String, modifier: Modifier 
         )
         Spacer(modifier = Modifier.height(8.dp))
         Text(label, style = MaterialTheme.typography.labelSmall, color = MaterialTheme.colorScheme.onSurfaceVariant)
-        Text(value, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurface, maxLines = 1, overflow = androidx.compose.ui.text.style.TextOverflow.Ellipsis)
+        Text(value, style = MaterialTheme.typography.bodyMedium, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurface, maxLines = 1, overflow = TextOverflow.Ellipsis)
     }
 }
 
@@ -357,6 +370,7 @@ fun PaperInfoScreenPreview() {
             year = "2023",
             onBackClick = {},
             onInitUrl = {},
+            onToggleBookmark = {},
             onOpenPaper = { _, _, _, _ -> },
             onDownloadClick = { _, _, _, _, _, _ -> }
         )

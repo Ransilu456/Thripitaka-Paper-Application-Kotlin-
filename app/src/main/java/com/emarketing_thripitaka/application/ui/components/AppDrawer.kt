@@ -25,7 +25,6 @@ import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
 import coil.request.ImageRequest
-import com.emarketing_thripitaka.application.R
 import com.emarketing_thripitaka.application.ui.navigation.DrawerNavItem
 import com.emarketing_thripitaka.application.ui.navigation.Screen
 import com.emarketing_thripitaka.application.ui.theme.AppColors
@@ -45,6 +44,7 @@ fun AppDrawer(
 
     val drawerItems = listOf(
         DrawerNavItem.Home,
+        DrawerNavItem.Downloads,
         DrawerNavItem.Services,
         DrawerNavItem.About
     )
@@ -138,9 +138,7 @@ fun AppDrawer(
                     scope.launch { drawerState.close() }
                     if (currentRoute != item.route) {
                         navController.navigate(item.route) {
-                            if (item.route == Screen.Home.route) {
-                                popUpTo(navController.graph.startDestinationId) { saveState = true }
-                            }
+                            popUpTo(Screen.Home.route) { saveState = true }
                             launchSingleTop = true
                             restoreState = true
                         }

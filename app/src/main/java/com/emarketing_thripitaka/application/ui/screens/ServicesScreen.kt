@@ -1,7 +1,7 @@
 package com.emarketing_thripitaka.application.ui.screens
 
+import android.content.Context
 import android.content.Intent
-import android.net.Uri
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
@@ -28,6 +28,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import com.emarketing_thripitaka.application.R
@@ -52,7 +53,7 @@ fun ServicesScreen(
     val isDark = isSystemInDarkTheme()
     val context = LocalContext.current
     val iconTint = if (isDark) Color.White else Color.Black
-    
+
     val services = remember {
         listOf(
             ServiceItem("සමාජ මාධ්‍ය කළමනාකරණය", "Social Media Marketing & Management", Icons.Default.Share, Color(0xFF3B82F6)),
@@ -64,10 +65,13 @@ fun ServicesScreen(
         )
     }
 
-    val gradientColors = if (isDark) {
-        listOf(MaterialTheme.colorScheme.background, Color(0xFF1A1A1A))
-    } else {
-        listOf(BackgroundLightStart, Color(0xFFFFEAC6))
+    val backgroundColor = AppColors.background()
+    val gradientColors = remember(isDark, backgroundColor) {
+        if (isDark) {
+            listOf(backgroundColor, Color(0xFF0A0A0A))
+        } else {
+            listOf(backgroundColor, Color(0xFFFFEAC6))
+        }
     }
 
     Scaffold(
@@ -78,7 +82,7 @@ fun ServicesScreen(
                     Text(
                         text = "අපගේ සේවාවන්",
                         style = MaterialTheme.typography.titleLarge.copy(
-                            fontWeight = FontWeight.ExtraBold,
+                            fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onBackground
                         )
                     )
@@ -103,7 +107,8 @@ fun ServicesScreen(
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color.Transparent,
                     scrolledContainerColor = Color.Transparent
-                )
+                ),
+                windowInsets = WindowInsets(0, 0, 0, 0)
             )
         }
     ) { innerPadding ->
@@ -142,7 +147,7 @@ fun ServicesScreen(
                 itemsIndexed(services) { index, service ->
                     var visible by remember { mutableStateOf(false) }
                     LaunchedEffect(Unit) { visible = true }
-                    
+
                     AnimatedVisibility(
                         visible = visible,
                         enter = fadeIn() + slideInVertically(initialOffsetY = { 50 * (index + 1) })
@@ -211,7 +216,7 @@ fun ServiceCard(service: ServiceItem) {
 }
 
 @Composable
-fun ContactCard(context: android.content.Context) {
+fun ContactCard(context: Context) {
     Card(
         modifier = Modifier.fillMaxWidth(),
         shape = RoundedCornerShape(24.dp),
@@ -238,7 +243,7 @@ fun ContactCard(context: android.content.Context) {
                     icon = Icons.Default.Call,
                     label = "Call Us",
                     onClick = {
-                        val intent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:0763460514"))
+                        val intent = Intent(Intent.ACTION_DIAL, "tel:0763460514".toUri())
                         context.startActivity(intent)
                     }
                 )
@@ -246,8 +251,7 @@ fun ContactCard(context: android.content.Context) {
                     icon = Icons.Default.WifiCalling3,
                     label = "WhatsApp",
                     onClick = {
-                        val url = "https://wa.me/94763460514"
-                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+                        val intent = Intent(Intent.ACTION_VIEW, "https://wa.me/94763460514".toUri())
                         context.startActivity(intent)
                     }
                 )

@@ -81,10 +81,13 @@ fun DownloadsScreenContent(
     val isDark = isSystemInDarkTheme()
     val snackbarHostState = remember { SnackbarHostState() }
 
-    val gradientColors = if (isDark) {
-        listOf(AppColors.background(), Color(0xFF0A0A0A))
-    } else {
-        listOf(AppColors.background(), Color(0xFFFFEAC6))
+    val backgroundColor = AppColors.background()
+    val gradientColors = remember(isDark, backgroundColor) {
+        if (isDark) {
+            listOf(backgroundColor, Color(0xFF0A0A0A))
+        } else {
+            listOf(backgroundColor, Color(0xFFFFEAC6))
+        }
     }
 
     LaunchedEffect(uiState.message) {
@@ -99,12 +102,12 @@ fun DownloadsScreenContent(
         containerColor = Color.Transparent,
         topBar = {
             CenterAlignedTopAppBar(
-                title = { 
+                title = {
                     Text(
                         "බාගත කිරීම්",
                         fontWeight = FontWeight.Bold,
                         color = MaterialTheme.colorScheme.onBackground
-                    ) 
+                    )
                 },
                 navigationIcon = {
                     IconButton(

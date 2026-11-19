@@ -1,7 +1,6 @@
 package com.emarketing_thripitaka.application.ui.screens
 
 import android.content.Intent
-import android.net.Uri
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -14,6 +13,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -27,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.net.toUri
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
 import coil.compose.rememberAsyncImagePainter
@@ -35,6 +36,7 @@ import com.emarketing_thripitaka.application.R
 import com.emarketing_thripitaka.application.ui.components.AboutCard
 import com.emarketing_thripitaka.application.ui.components.SocialButton
 import com.emarketing_thripitaka.application.ui.theme.*
+import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -42,16 +44,19 @@ import kotlinx.coroutines.launch
 fun AboutScreen(
     navController: NavController,
     drawerState: DrawerState,
-    scope: kotlinx.coroutines.CoroutineScope = rememberCoroutineScope()
+    scope: CoroutineScope = rememberCoroutineScope()
 ) {
     val isDark = isSystemInDarkTheme()
     val context = LocalContext.current
     val iconTint = if (isDark) Color.White else Color.Black
 
-    val gradientColors = if (isDark) {
-        listOf(AppColors.background(), Color(0xFF0A0A0A))
-    } else {
-        listOf(AppColors.background(), Color(0xFFFFEAC6))
+    val backgroundColor = AppColors.background()
+    val gradientColors = remember(isDark, backgroundColor) {
+        if (isDark) {
+            listOf(backgroundColor, Color(0xFF0A0A0A))
+        } else {
+            listOf(backgroundColor, Color(0xFFFFEAC6))
+        }
     }
 
     Scaffold(
@@ -62,7 +67,7 @@ fun AboutScreen(
                     Text(
                         text = "අප ගැන",
                         style = MaterialTheme.typography.titleLarge.copy(
-                            fontWeight = FontWeight.ExtraBold,
+                            fontWeight = FontWeight.Bold,
                             color = MaterialTheme.colorScheme.onBackground
                         )
                     )
@@ -95,7 +100,8 @@ fun AboutScreen(
                 colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                     containerColor = Color.Transparent,
                     scrolledContainerColor = Color.Transparent
-                )
+                ),
+                windowInsets = WindowInsets(0, 0, 0, 0)
             )
         }
     ) { innerPadding ->
@@ -132,9 +138,9 @@ fun AboutScreen(
                         modifier = Modifier.size(75.dp)
                     )
                 }
-                
+
                 Spacer(modifier = Modifier.height(16.dp))
-                
+
                 Text(
                     text = "ත්‍රිපිටක විභාග Past Papers",
                     style = MaterialTheme.typography.headlineSmall.copy(
@@ -180,7 +186,7 @@ fun AboutScreen(
                                     icon = Icons.Default.Call,
                                     isDark = isDark,
                                     onClick = {
-                                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://wa.me/94763460514"))
+                                        val intent = Intent(Intent.ACTION_VIEW, "https://wa.me/94763460514".toUri())
                                         context.startActivity(intent)
                                     }
                                 )
@@ -189,7 +195,7 @@ fun AboutScreen(
                                     icon = Icons.Default.Language,
                                     isDark = isDark,
                                     onClick = {
-                                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://emarketingparadice.lk"))
+                                        val intent = Intent(Intent.ACTION_VIEW, "https://emarketingparadice.lk".toUri())
                                         context.startActivity(intent)
                                     }
                                 )
@@ -199,7 +205,7 @@ fun AboutScreen(
                                     isDark = isDark,
                                     onClick = {
                                         val intent = Intent(Intent.ACTION_SENDTO).apply {
-                                            data = Uri.parse("mailto:emarketingparadice@gmail.com")
+                                            data = "mailto:emarketingparadice@gmail.com".toUri()
                                         }
                                         context.startActivity(intent)
                                     }
@@ -210,7 +216,7 @@ fun AboutScreen(
                 }
 
                 Spacer(modifier = Modifier.height(32.dp))
-                
+
                 Image(
                     painter = rememberAsyncImagePainter(
                         ImageRequest.Builder(context)

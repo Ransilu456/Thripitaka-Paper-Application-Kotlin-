@@ -22,11 +22,11 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.emarketing_thripitaka.application.R
 import com.emarketing_thripitaka.application.ui.navigation.Screen
 import com.emarketing_thripitaka.application.ui.theme.*
 import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
 fun WelcomeScreen(navController: NavController) {
@@ -34,7 +34,7 @@ fun WelcomeScreen(navController: NavController) {
 
     LaunchedEffect(Unit) {
         startAnimation = true
-        delay(3500)
+        delay(3500.milliseconds)
         navController.navigate(Screen.Home.route) {
             popUpTo(Screen.Welcome.route) { inclusive = true }
         }
@@ -91,7 +91,7 @@ fun WelcomeScreenContent(startAnimation: Boolean) {
             Spacer(modifier = Modifier.height(32.dp))
             
             Text(
-                text = "ත්‍රිපිටක විභාග Past Papers",
+                text = "ත්‍රිපිටක විභාගය",
                 style = MaterialTheme.typography.headlineMedium.copy(
                     fontWeight = FontWeight.ExtraBold,
                     color = if (isDark) Color.White else Color.Black,
@@ -101,16 +101,17 @@ fun WelcomeScreenContent(startAnimation: Boolean) {
                 ),
                 modifier = Modifier.alpha(alphaAnim)
             )
-            
+
             Text(
-                text = "ශ්‍රී ලංකා රාමඤ්ඤය මහා නිකායේ ත්‍රිපිටක විභාග සඳහා",
-                style = MaterialTheme.typography.bodyMedium.copy(
-                    color = (if (isDark) Color.White else Color.Black).copy(alpha = 0.6f),
-                    textAlign = TextAlign.Center
+                text = "Past Papers",
+                style = MaterialTheme.typography.headlineMedium.copy(
+                    fontWeight = FontWeight.Medium,
+                    color = if (isDark) Color.White else Color.Black,
+                    textAlign = TextAlign.Center,
+                    lineHeight = 36.sp,
+                    letterSpacing = 0.5.sp
                 ),
-                modifier = Modifier
-                    .padding(top = 12.dp)
-                    .alpha(alphaAnim)
+                modifier = Modifier.alpha(alphaAnim)
             )
         }
 
@@ -122,26 +123,9 @@ fun WelcomeScreenContent(startAnimation: Boolean) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
-                text = "Developed By",
+                text = "Developed By E-Marketing Paradice",
                 style = MaterialTheme.typography.labelSmall.copy(
-                    color = (if (isDark) Color.White else Color.Black).copy(alpha = 0.4f),
-                    letterSpacing = 2.sp
-                )
-            )
-            Spacer(modifier = Modifier.height(4.dp))
-            Text(
-                text = "E-Marketing Paradice",
-                style = MaterialTheme.typography.bodyLarge.copy(
-                    fontWeight = FontWeight.Bold,
-                    color = AppColors.primary(),
-                    letterSpacing = 0.5.sp
-                )
-            )
-            Spacer(modifier = Modifier.height(16.dp))
-            Text(
-                text = "Version 1.0.1",
-                style = MaterialTheme.typography.labelSmall.copy(
-                    color = (if (isDark) Color.White else Color.Black).copy(alpha = 0.3f)
+                    color = (if (isDark) Color.White else Color.Black),
                 )
             )
         }

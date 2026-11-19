@@ -1,14 +1,12 @@
 package com.emarketing_thripitaka.application.ui.layout
 
 import androidx.compose.animation.*
-import androidx.compose.foundation.background
+import androidx.compose.animation.core.tween
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.emarketing_thripitaka.application.ui.components.AppBottomBar
@@ -26,17 +24,18 @@ fun AppLayout() {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
 
-    // Determine bottom bar visibility
+    // Show bottom bar for all main screens so it remains stationary
     val showBottomBar = when (currentRoute) {
         Screen.Home.route, 
         Screen.Downloads.route, 
-        Screen.PaperInfo.route -> true
+        Screen.Services.route,
+        Screen.About.route -> true
         else -> false
     }
 
     ModalNavigationDrawer(
         drawerState = drawerState,
-        gesturesEnabled = drawerState.isOpen,
+        gesturesEnabled = drawerState.isOpen || showBottomBar,
         drawerContent = { 
             AppDrawer(
                 navController = navController,
@@ -49,8 +48,8 @@ fun AppLayout() {
             bottomBar = {
                 AnimatedVisibility(
                     visible = showBottomBar,
-                    enter = slideInVertically(initialOffsetY = { it }) + fadeIn(),
-                    exit = slideOutVertically(targetOffsetY = { it }) + fadeOut()
+                    enter = fadeIn(animationSpec = tween(150)),
+                    exit = fadeOut(animationSpec = tween(150))
                 ) {
                     AppBottomBar(navController)
                 }

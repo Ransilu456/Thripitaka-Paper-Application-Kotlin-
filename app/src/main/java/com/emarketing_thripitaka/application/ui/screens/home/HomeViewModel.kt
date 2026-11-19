@@ -3,28 +3,32 @@ package com.emarketing_thripitaka.application.ui.screens.home
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.emarketing_thripitaka.application.data.BookmarkManager
 import com.emarketing_thripitaka.application.data.DataLoader
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
+import com.emarketing_thripitaka.application.model.Paper
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 
 class HomeViewModel(application: Application) : AndroidViewModel(application) {
 
+    private val bookmarkManager = BookmarkManager(application)
     private val _uiState = MutableStateFlow(HomeUiState())
     val uiState: StateFlow<HomeUiState> = _uiState.asStateFlow()
 
     init {
         loadExams()
+        observeBookmarks()
     }
 
     private fun loadExams() {
         viewModelScope.launch {
             _uiState.update { it.copy(isLoading = true) }
-            val exams = DataLoader.loadExams(getApplication())
+            val exams = withContext(Dispatchers.IO) {
+                DataLoader.loadExams(getApplication())
+            }
             
-            // Set initial selection if available
             val initialExam = exams.firstOrNull()?.title ?: ""
             val initialCategories = exams.firstOrNull()?.categories?.map { it.name } ?: emptyList()
 
@@ -35,6 +39,14 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
                     selectedExam = initialExam,
                     availableCategories = initialCategories
                 )
+            }
+        }
+    }
+
+    private fun observeBookmarks() {
+        viewModelScope.launch {
+            bookmarkManager.bookmarks.collect { bookmarks ->
+                _uiState.update { it.copy(bookmarks = bookmarks) }
             }
         }
     }
@@ -60,7 +72,7 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         val exam = _uiState.value.exams.find { it.title == _uiState.value.selectedExam }
         val category = exam?.categories?.find { it.name == categoryName }
         val papers = category?.papers ?: emptyList()
-        val uniqueYears = papers.distinctBy { it.year } // List<Paper> for years dropdown
+        val uniqueYears = papers.distinctBy { it.year }
 
         _uiState.update {
             it.copy(
@@ -75,11 +87,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun onYearSelected(yearLabel: String) {
-        // Extract year from label "Paper Title (2023)" -> "2023"
-        // Logic from original HomeScreen:
-        // options = uniqueYearPapers.map { "${it.paper_title} (${it.year})" }
-        // val year = label.substringAfterLast("(").substringBefore(")")
-        
         val yearStr = yearLabel.substringAfterLast("(").substringBefore(")")
         val exam = _uiState.value.exams.find { it.title == _uiState.value.selectedExam }
         val category = exam?.categories?.find { it.name == _uiState.value.selectedCategory }
@@ -88,9 +95,8 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         val yearInt = yearStr.toIntOrNull() ?: 0
         val papersForYear = allPapers.filter { it.year == yearInt }
         
-        // Parts logic
         val parts = papersForYear.filter { it.part != null }.map { "Part ${it.part}" }
-        val selectedPaper = papersForYear.firstOrNull() // Default to first if main paper
+        val selectedPaper = papersForYear.firstOrNull()
 
         _uiState.update {
             it.copy(
@@ -103,7 +109,6 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
     }
 
     fun onPartSelected(partLabel: String) {
-        // Part Part 1 -> 1
         val partStr = partLabel.removePrefix("Part ")
         val exam = _uiState.value.exams.find { it.title == _uiState.value.selectedExam }
         val category = exam?.categories?.find { it.name == _uiState.value.selectedCategory }
@@ -115,8 +120,49 @@ class HomeViewModel(application: Application) : AndroidViewModel(application) {
         _uiState.update {
             it.copy(
                 selectedPart = partStr,
-                selectedPaper = matchingPaper // Update selected paper to the specific part
+                selectedPaper = matchingPaper
             )
         }
+    }
+
+    fun onSearchQueryChanged(query: String) {
+        if (query.isBlank()) {
+            _uiState.update { it.copy(searchQuery = query, searchResults = emptyList()) }
+            return
+        }
+
+        val results = mutableListOf<SearchResultPaper>()
+        val queryLower = query.lowercase().trim()
+
+        _uiState.value.exams.forEach { exam ->
+            exam.categories.forEach { category ->
+                category.papers.forEach { paper ->
+                    val matchTitle = paper.paper_title.lowercase().contains(queryLower)
+                    val matchYear = paper.year.toString().contains(queryLower)
+                    val matchExam = exam.title.lowercase().contains(queryLower)
+                    val matchCategory = category.name.lowercase().contains(queryLower)
+
+                    if (matchTitle || matchYear || matchExam || matchCategory) {
+                        results.add(SearchResultPaper(examTitle = exam.title, categoryName = category.name, paper = paper))
+                    }
+                }
+            }
+        }
+
+        _uiState.update { it.copy(searchQuery = query, searchResults = results) }
+    }
+
+    fun toggleSearchActive(active: Boolean) {
+        _uiState.update { it.copy(isSearchActive = active, searchQuery = "", searchResults = emptyList()) }
+    }
+
+    fun toggleBookmark(exam: String, category: String, paper: Paper) {
+        viewModelScope.launch {
+            bookmarkManager.toggleBookmark(exam, category, paper)
+        }
+    }
+
+    fun toggleShowBookmarksOnly(show: Boolean) {
+        _uiState.update { it.copy(showBookmarksOnly = show) }
     }
 }

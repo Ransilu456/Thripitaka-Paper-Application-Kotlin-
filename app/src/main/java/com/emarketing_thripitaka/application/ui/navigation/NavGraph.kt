@@ -1,7 +1,10 @@
 package com.emarketing_thripitaka.application.ui.navigation
 
 import androidx.compose.animation.*
+import androidx.compose.animation.core.FastOutSlowInEasing
+import androidx.compose.animation.core.LinearOutSlowInEasing
 import androidx.compose.animation.core.tween
+import androidx.compose.material3.DrawerState
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -15,6 +18,7 @@ import com.emarketing_thripitaka.application.ui.screens.downloads.DownloadsScree
 import com.emarketing_thripitaka.application.ui.screens.paperinfo.PaperInfoScreen
 import com.emarketing_thripitaka.application.ui.screens.pdfviewer.PdfViewerScreen
 import com.emarketing_thripitaka.application.ui.screens.welcome.WelcomeScreen
+import kotlinx.coroutines.CoroutineScope
 import java.net.URLDecoder
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
@@ -41,21 +45,60 @@ sealed class Screen(val route: String) {
     }
 }
 
+private val mainRoutes = setOf(
+    Screen.Home.route,
+    Screen.Downloads.route,
+    Screen.Services.route,
+    Screen.About.route
+)
+
 @Composable
 fun NavGraph(
     navController: NavHostController,
     modifier: Modifier = Modifier,
-    drawerState: androidx.compose.material3.DrawerState,
-    scope: kotlinx.coroutines.CoroutineScope
+    drawerState: DrawerState,
+    scope: CoroutineScope
 ) {
     NavHost(
         navController = navController, 
         startDestination = Screen.Welcome.route,
         modifier = modifier,
-        enterTransition = { fadeIn(animationSpec = tween(400)) + slideInHorizontally(initialOffsetX = { 300 }, animationSpec = tween(400)) },
-        exitTransition = { fadeOut(animationSpec = tween(400)) + slideOutHorizontally(targetOffsetX = { -300 }, animationSpec = tween(400)) },
-        popEnterTransition = { fadeIn(animationSpec = tween(400)) + slideInHorizontally(initialOffsetX = { -300 }, animationSpec = tween(400)) },
-        popExitTransition = { fadeOut(animationSpec = tween(400)) + slideOutHorizontally(targetOffsetX = { 300 }, animationSpec = tween(400)) }
+        enterTransition = {
+            val initial = initialState.destination.route
+            val target = targetState.destination.route
+            if (initial in mainRoutes && target in mainRoutes) {
+                fadeIn(animationSpec = tween(220, easing = LinearOutSlowInEasing))
+            } else {
+                slideInHorizontally(initialOffsetX = { it }, animationSpec = tween(350, easing = FastOutSlowInEasing)) + fadeIn(tween(350))
+            }
+        },
+        exitTransition = {
+            val initial = initialState.destination.route
+            val target = targetState.destination.route
+            if (initial in mainRoutes && target in mainRoutes) {
+                fadeOut(animationSpec = tween(180))
+            } else {
+                slideOutHorizontally(targetOffsetX = { -it / 3 }, animationSpec = tween(350, easing = FastOutSlowInEasing)) + fadeOut(tween(350))
+            }
+        },
+        popEnterTransition = {
+            val initial = initialState.destination.route
+            val target = targetState.destination.route
+            if (initial in mainRoutes && target in mainRoutes) {
+                fadeIn(animationSpec = tween(220))
+            } else {
+                slideInHorizontally(initialOffsetX = { -it / 3 }, animationSpec = tween(350, easing = FastOutSlowInEasing)) + fadeIn(tween(350))
+            }
+        },
+        popExitTransition = {
+            val initial = initialState.destination.route
+            val target = targetState.destination.route
+            if (initial in mainRoutes && target in mainRoutes) {
+                fadeOut(animationSpec = tween(180))
+            } else {
+                slideOutHorizontally(targetOffsetX = { it }, animationSpec = tween(350, easing = FastOutSlowInEasing)) + fadeOut(tween(350))
+            }
+        }
     ) {
         composable(Screen.Welcome.route) {
             WelcomeScreen(navController)

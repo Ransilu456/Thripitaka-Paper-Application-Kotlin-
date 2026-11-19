@@ -6,5 +6,6 @@ data class PaperInfoUiState(
     val errorMessage: String? = null,
     val isSuccess: Boolean = false,
     val localPath: String? = null,
-    val isCheckingDownload: Boolean = true
+    val isCheckingDownload: Boolean = true,
+    val isBookmarked: Boolean = false
 )

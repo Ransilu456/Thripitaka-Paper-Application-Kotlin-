@@ -2,11 +2,19 @@ package com.emarketing_thripitaka.application.ui.screens.home
 
 import android.app.Application
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.BookmarkBorder
+import androidx.compose.material.icons.filled.Close
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
@@ -17,6 +25,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -24,6 +33,8 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.emarketing_thripitaka.application.R
 import com.emarketing_thripitaka.application.ViewModelFactory
+import com.emarketing_thripitaka.application.data.BookmarkedPaper
+import com.emarketing_thripitaka.application.model.Paper
 import com.emarketing_thripitaka.application.ui.components.CustomButton
 import com.emarketing_thripitaka.application.ui.navigation.Screen
 import com.emarketing_thripitaka.application.ui.theme.*
@@ -49,6 +60,22 @@ fun HomeScreen(
         onCategorySelected = { viewModel.onCategorySelected(it) },
         onYearSelected = { viewModel.onYearSelected(it) },
         onPartSelected = { viewModel.onPartSelected(it) },
+        onSearchQueryChanged = { viewModel.onSearchQueryChanged(it) },
+        onToggleSearchActive = { viewModel.toggleSearchActive(it) },
+        onToggleBookmark = { exam, cat, paper -> viewModel.toggleBookmark(exam, cat, paper) },
+        onToggleShowBookmarks = { viewModel.toggleShowBookmarksOnly(it) },
+        onPaperClick = { exam, cat, paper ->
+            navController.navigate(
+                Screen.PaperInfo.createRoute(
+                    exam = exam,
+                    category = cat,
+                    paperTitle = paper.paper_title,
+                    paperLink = paper.link,
+                    part = paper.part?.toString(),
+                    year = paper.year.toString()
+                )
+            )
+        },
         onNextClick = {
             if (uiState.selectedExam.isNotEmpty() && uiState.selectedCategory.isNotEmpty() && uiState.selectedPaper != null) {
                 val paper = uiState.selectedPaper!!
@@ -76,16 +103,24 @@ fun HomeScreenContent(
     onCategorySelected: (String) -> Unit,
     onYearSelected: (String) -> Unit,
     onPartSelected: (String) -> Unit,
+    onSearchQueryChanged: (String) -> Unit,
+    onToggleSearchActive: (Boolean) -> Unit,
+    onToggleBookmark: (String, String, Paper) -> Unit,
+    onToggleShowBookmarks: (Boolean) -> Unit,
+    onPaperClick: (String, String, Paper) -> Unit,
     onNextClick: () -> Unit
 ) {
     val isDark = isSystemInDarkTheme()
     val iconTint = if (isDark) Color.White else Color.Black
     var showValidationAlert by remember { mutableStateOf(false) }
 
-    val gradientColors = if (isDark) {
-        listOf(AppColors.background(), Color(0xFF0A0A0A))
-    } else {
-        listOf(AppColors.background(), Color(0xFFFFEAC6))
+    val backgroundColor = AppColors.background()
+    val gradientColors = remember(isDark, backgroundColor) {
+        if (isDark) {
+            listOf(backgroundColor, Color(0xFF0A0A0A))
+        } else {
+            listOf(backgroundColor, Color(0xFFFFEAC6))
+        }
     }
 
     Box(
@@ -107,11 +142,37 @@ fun HomeScreenContent(
             topBar = {
                 CenterAlignedTopAppBar(
                     title = {
-                        Text(
-                            "මුල් පිටුව",
-                            fontWeight = FontWeight.Bold,
-                            color = MaterialTheme.colorScheme.onBackground
-                        )
+                        if (uiState.isSearchActive) {
+                            OutlinedTextField(
+                                value = uiState.searchQuery,
+                                onValueChange = onSearchQueryChanged,
+                                placeholder = { Text("ප්‍රශ්න පත්‍ර සෙවුම...", fontSize = 14.sp) },
+                                singleLine = true,
+                                trailingIcon = {
+                                    if (uiState.searchQuery.isNotEmpty()) {
+                                        IconButton(onClick = { onSearchQueryChanged("") }) {
+                                            Icon(Icons.Default.Close, null, modifier = Modifier.size(18.dp))
+                                        }
+                                    }
+                                },
+                                modifier = Modifier
+                                    .fillMaxWidth(0.9f)
+                                    .height(50.dp),
+                                shape = RoundedCornerShape(25.dp),
+                                colors = OutlinedTextFieldDefaults.colors(
+                                    focusedBorderColor = AppColors.primary(),
+                                    unfocusedBorderColor = AppColors.unselected().copy(alpha = 0.3f),
+                                    focusedContainerColor = AppColors.surface(),
+                                    unfocusedContainerColor = AppColors.surface()
+                                )
+                            )
+                        } else {
+                            Text(
+                                "මුල් පිටුව",
+                                fontWeight = FontWeight.Bold,
+                                color = MaterialTheme.colorScheme.onBackground
+                            )
+                        }
                     },
                     navigationIcon = {
                         IconButton(
@@ -130,6 +191,28 @@ fun HomeScreenContent(
                             )
                         }
                     },
+                    actions = {
+                        IconButton(
+                            onClick = { onToggleSearchActive(!uiState.isSearchActive) },
+                            modifier = Modifier.padding(end = 4.dp)
+                        ) {
+                            Icon(
+                                imageVector = if (uiState.isSearchActive) Icons.Default.Close else Icons.Default.Search,
+                                contentDescription = "Search",
+                                tint = iconTint
+                            )
+                        }
+                        IconButton(
+                            onClick = { onToggleShowBookmarks(!uiState.showBookmarksOnly) },
+                            modifier = Modifier.padding(end = 8.dp)
+                        ) {
+                            Icon(
+                                imageVector = if (uiState.showBookmarksOnly) Icons.Default.Bookmark else Icons.Default.BookmarkBorder,
+                                contentDescription = "Bookmarks",
+                                tint = if (uiState.showBookmarksOnly) AppColors.primary() else iconTint
+                            )
+                        }
+                    },
                     colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
                         containerColor = Color.Transparent,
                         scrolledContainerColor = Color.Transparent
@@ -145,14 +228,28 @@ fun HomeScreenContent(
                     .padding(innerPadding)
             ) {
                 if (uiState.isLoading) {
-                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center), color = AppColors.primary())
+                } else if (uiState.isSearchActive) {
+                    SearchModeView(
+                        query = uiState.searchQuery,
+                        results = uiState.searchResults,
+                        onPaperClick = onPaperClick
+                    )
+                } else if (uiState.showBookmarksOnly) {
+                    BookmarksView(
+                        bookmarks = uiState.bookmarks,
+                        onPaperClick = onPaperClick,
+                        onRemoveBookmark = { item ->
+                            onToggleBookmark(item.exam, item.category, item.paper)
+                        }
+                    )
                 } else {
                     Column(
                         modifier = Modifier
                             .fillMaxSize()
                             .verticalScroll(rememberScrollState())
                     ) {
-                        Spacer(modifier = Modifier.height(20.dp))
+                        Spacer(modifier = Modifier.height(16.dp))
 
                         Column(
                             modifier = Modifier
@@ -171,7 +268,7 @@ fun HomeScreenContent(
                                 modifier = Modifier.fillMaxWidth()
                             )
 
-                            Spacer(modifier = Modifier.height(32.dp))
+                            Spacer(modifier = Modifier.height(28.dp))
 
                             Text(
                                 text = "ඔබගේ විභාගය තෝරන්න",
@@ -181,7 +278,7 @@ fun HomeScreenContent(
                                 )
                             )
 
-                            Spacer(modifier = Modifier.height(16.dp))
+                            Spacer(modifier = Modifier.height(12.dp))
 
                             AppDropdown(
                                 label = "විභාගය",
@@ -213,7 +310,7 @@ fun HomeScreenContent(
                                 )
                             }
 
-                            Spacer(modifier = Modifier.height(24.dp))
+                            Spacer(modifier = Modifier.height(20.dp))
 
                             val selectionText = if (uiState.selectedExam.isNotEmpty() && uiState.selectedCategory.isNotEmpty() && (uiState.selectedYear.isNotEmpty())) {
                                  buildString {
@@ -234,19 +331,46 @@ fun HomeScreenContent(
                                 modifier = Modifier.fillMaxWidth()
                             )
 
-                            Spacer(modifier = Modifier.height(40.dp))
+                            Spacer(modifier = Modifier.height(32.dp))
 
-                            CustomButton(
-                                title = "Next",
-                                onPress = {
-                                    if (uiState.selectedExam.isNotEmpty() && uiState.selectedCategory.isNotEmpty() && uiState.selectedPaper != null) {
-                                        onNextClick()
-                                    } else {
-                                        showValidationAlert = true
+                            Row(
+                                modifier = Modifier.fillMaxWidth(),
+                                verticalAlignment = Alignment.CenterVertically
+                            ) {
+                                CustomButton(
+                                    title = "Next",
+                                    onPress = {
+                                        if (uiState.selectedExam.isNotEmpty() && uiState.selectedCategory.isNotEmpty() && uiState.selectedPaper != null) {
+                                            onNextClick()
+                                        } else {
+                                            showValidationAlert = true
+                                        }
+                                    },
+                                    modifier = Modifier.weight(1f)
+                                )
+
+                                if (uiState.selectedPaper != null) {
+                                    val isBookmarked = uiState.bookmarks.any { it.paper.link == uiState.selectedPaper.link }
+                                    Spacer(modifier = Modifier.width(12.dp))
+                                    IconButton(
+                                        onClick = {
+                                            onToggleBookmark(uiState.selectedExam, uiState.selectedCategory, uiState.selectedPaper)
+                                        },
+                                        modifier = Modifier
+                                            .size(56.dp)
+                                            .background(
+                                                if (isBookmarked) AppColors.primary().copy(alpha = 0.15f) else AppColors.surface(),
+                                                RoundedCornerShape(18.dp)
+                                            )
+                                    ) {
+                                        Icon(
+                                            imageVector = if (isBookmarked) Icons.Default.Bookmark else Icons.Default.BookmarkBorder,
+                                            contentDescription = "Bookmark",
+                                            tint = AppColors.primary()
+                                        )
                                     }
-                                },
-                                modifier = Modifier.fillMaxWidth()
-                            )
+                                }
+                            }
 
                             Spacer(modifier = Modifier.height(80.dp))
                         }
@@ -272,6 +396,111 @@ fun HomeScreenContent(
     }
 }
 
+@Composable
+fun SearchModeView(
+    query: String,
+    results: List<SearchResultPaper>,
+    onPaperClick: (String, String, Paper) -> Unit
+) {
+    if (query.isEmpty()) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text("ප්‍රශ්න පත්‍ර නම, වර්ෂය හෝ විභාගය සූක්ෂ්මව සොයන්න...", color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+    } else if (results.isEmpty()) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Text("ප්‍රතිඵල හමු නොවීය", color = MaterialTheme.colorScheme.onSurfaceVariant)
+        }
+    } else {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            items(results) { item ->
+                Card(
+                    modifier = Modifier.fillMaxWidth().clickable { onPaperClick(item.examTitle, item.categoryName, item.paper) },
+                    shape = RoundedCornerShape(16.dp),
+                    colors = CardDefaults.cardColors(containerColor = AppColors.surface())
+                ) {
+                    Row(
+                        modifier = Modifier.padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Surface(
+                            modifier = Modifier.size(44.dp),
+                            shape = RoundedCornerShape(12.dp),
+                            color = AppColors.primary().copy(alpha = 0.12f)
+                        ) {
+                            Box(contentAlignment = Alignment.Center) {
+                                Icon(painterResource(id = R.drawable.ic_solar_document_text), null, tint = AppColors.primary(), modifier = Modifier.size(22.dp))
+                            }
+                        }
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(item.paper.paper_title, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            Text("${item.examTitle} • ${item.categoryName} (${item.paper.year})", fontSize = 12.sp, color = AppColors.primary())
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@Composable
+fun BookmarksView(
+    bookmarks: List<BookmarkedPaper>,
+    onPaperClick: (String, String, Paper) -> Unit,
+    onRemoveBookmark: (BookmarkedPaper) -> Unit
+) {
+    if (bookmarks.isEmpty()) {
+        Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
+                Icon(Icons.Default.BookmarkBorder, null, modifier = Modifier.size(64.dp), tint = AppColors.unselected())
+                Spacer(modifier = Modifier.height(16.dp))
+                Text("තවමත් ප්‍රියතම ප්‍රශ්න පත්‍ර නොමැත", style = MaterialTheme.typography.titleMedium, color = MaterialTheme.colorScheme.onSurfaceVariant)
+            }
+        }
+    } else {
+        LazyColumn(
+            modifier = Modifier.fillMaxSize(),
+            contentPadding = PaddingValues(16.dp),
+            verticalArrangement = Arrangement.spacedBy(10.dp)
+        ) {
+            items(bookmarks) { item ->
+                Card(
+                    modifier = Modifier.fillMaxWidth().clickable { onPaperClick(item.exam, item.category, item.paper) },
+                    shape = RoundedCornerShape(16.dp),
+                    colors = CardDefaults.cardColors(containerColor = AppColors.surface())
+                ) {
+                    Row(
+                        modifier = Modifier.padding(16.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Surface(
+                            modifier = Modifier.size(44.dp),
+                            shape = RoundedCornerShape(12.dp),
+                            color = AppColors.primary().copy(alpha = 0.12f)
+                        ) {
+                            Box(contentAlignment = Alignment.Center) {
+                                Icon(Icons.Default.Bookmark, null, tint = AppColors.primary(), modifier = Modifier.size(22.dp))
+                            }
+                        }
+                        Spacer(modifier = Modifier.width(16.dp))
+                        Column(modifier = Modifier.weight(1f)) {
+                            Text(item.paper.paper_title, fontWeight = FontWeight.Bold, maxLines = 1, overflow = TextOverflow.Ellipsis)
+                            Text("${item.exam} • ${item.category} (${item.paper.year})", fontSize = 12.sp, color = AppColors.primary())
+                        }
+                        IconButton(onClick = { onRemoveBookmark(item) }) {
+                            Icon(Icons.Default.Close, null, tint = MaterialTheme.colorScheme.error.copy(alpha = 0.7f))
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppDropdown(
@@ -287,7 +516,7 @@ fun AppDropdown(
         onExpandedChange = { expanded = it },
         modifier = Modifier
             .fillMaxWidth()
-            .padding(vertical = 8.dp)
+            .padding(vertical = 6.dp)
     ) {
         OutlinedTextField(
             value = selectedOption.ifEmpty { label },
@@ -303,7 +532,7 @@ fun AppDropdown(
             modifier = Modifier
                 .menuAnchor(MenuAnchorType.PrimaryNotEditable)
                 .fillMaxWidth(),
-            shape = RoundedCornerShape(12.dp)
+            shape = RoundedCornerShape(14.dp)
         )
 
         ExposedDropdownMenu(
@@ -339,6 +568,11 @@ fun HomeScreenPreview() {
             onCategorySelected = {},
             onYearSelected = {},
             onPartSelected = {},
+            onSearchQueryChanged = {},
+            onToggleSearchActive = {},
+            onToggleBookmark = { _, _, _ -> },
+            onToggleShowBookmarks = {},
+            onPaperClick = { _, _, _ -> },
             onNextClick = {}
         )
     }
